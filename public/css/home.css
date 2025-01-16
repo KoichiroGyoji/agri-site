@@ -1,0 +1,82 @@
+
+.test1 {
+    background-image: url("https://res.cloudinary.com/dmmkqk7xc/image/upload/v1733371694/e39fac0a3d17aed2b4c1b3c0dc69f464_be12u4.jpg");
+    background-size: cover; 
+    background-attachment: fixed;
+    background-position: center center; 
+    height: 900px;
+    background-repeat: no-repeat;
+}
+
+.font {
+    font-family: "Times New Roman" , "游明朝" , "Yu Mincho" , 
+                "游明朝体" , "YuMincho" , "ヒラギノ明朝 Pro W3" , "Hiragino Mincho Pro" , "HiraMinProN-W3" , 
+                "HGS明朝E" , "ＭＳ Ｐ明朝" , "MS PMincho" , serif;
+    font-size: 1.5em;
+}
+
+.font-a {
+    font-family: "Times New Roman" , "游明朝" , "Yu Mincho" , 
+                "游明朝体" , "YuMincho" , "ヒラギノ明朝 Pro W3" , "Hiragino Mincho Pro" , "HiraMinProN-W3" , 
+                "HGS明朝E" , "ＭＳ Ｐ明朝" , "MS PMincho" , serif;
+    font-size: 3em;
+    text-align: center;
+}
+
+.fuchidori {
+  color: #000;
+  text-shadow:1px 1px 0 #FFF, -1px -1px 0 #FFF,
+              -1px 1px 0 #FFF, 1px -1px 0 #FFF,
+              0px 1px 0 #FFF,  0-1px 0 #FFF,
+              -1px 0 0 #FFF, 1px 0 0 #FFF;
+}
+
+.test3 {
+    position: relative;
+    top: 30%;
+    left: 30%;
+}
+
+.test4 {
+    background-image: url("https://res.cloudinary.com/dmmkqk7xc/image/upload/v1733371694/e39fac0a3d17aed2b4c1b3c0dc69f464_be12u4.jpg");
+    background-size: contain; 
+    background-attachment: fixed;
+    background-position: center center; 
+    height: 600px;
+    background-repeat: no-repeat;
+}
+
+.button003 a {
+    background: #eee;
+    border-radius: 50px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 260px;
+    padding: 10px 25px;
+    color: #313131;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+}
+.button003 a:hover {
+    background: #313131;
+    color: #FFF;
+}
+.button003 a:after {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-top: 3px solid #313131;
+    border-right: 3px solid #313131;
+    transform: rotate(45deg) translateY(-50%);
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    border-radius: 1px;
+    transition: 0.3s ease-in-out;
+}
+.button003 a:hover:after {
+    border-color: #FFF;
+}
