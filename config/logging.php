@@ -53,21 +53,21 @@ return [
     'channels' => [
 
         'stack' => [
-             'driver' => 'stack',
--            'channels' => ['single'],
-+            'channels' => ['stderr'],
--            'ignore_exceptions' => false,
-+            'ignore_exceptions' => true,
-+            'tap' => [
-+                CloudTraceProcessorApplier::class,
-+                WebProcessorApplier::class,
+            'driver' => 'stack',
+            'channels' => ['single'],
+            'channels' => ['stderr'],
+            'ignore_exceptions' => false,
+            'ignore_exceptions' => true,
+            'tap' => [
+                CloudTraceProcessorApplier::class,
+               WebProcessorApplier::class,
             ],
          ],
-        
 
+        
         'single' => [
             'driver' => 'single',
-            'path' => storage_path('logs/laravel.log'),
+            'path' => env('LOG_PATH', '/tmp/laravel.log'),
             'level' => env('LOG_LEVEL', 'debug'),
             'replace_placeholders' => true,
         ],
@@ -102,14 +102,14 @@ return [
         ],
 
         'stderr' => [
-             'driver' => 'monolog',
-+            'level' => env('LOG_STDERR_LEVEL'),
-             'handler' => StreamHandler::class,
--            'formatter' => env('LOG_STDERR_FORMATTER'),
-+            'formatter' => env('LOG_STDERR_FORMATTER', JsonFormatter::class),
-             'with' => [
-                 'stream' => 'php://stderr',
-             ],
+            'driver' => 'monolog',
+            'level' => env('LOG_STDERR_LEVEL'),
+            'handler' => StreamHandler::class,
+            'formatter' => env('LOG_STDERR_FORMATTER'),
+            'formatter' => env('LOG_STDERR_FORMATTER', JsonFormatter::class),
+            'with' => [
+                'stream' => 'php://stderr',
+            ],
          ],
 
         'syslog' => [
@@ -131,8 +131,8 @@ return [
         ],
 
         'emergency' => [
--            'path' => storage_path('logs/laravel.log'),
-+            'path' => 'php://stderr',
+            'path' => storage_path('logs/laravel.log'),
+            'path' => 'php://stderr',
          ],
 
     ],
