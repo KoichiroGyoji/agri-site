@@ -53,10 +53,17 @@ return [
     'channels' => [
 
         'stack' => [
-            'driver' => 'stack',
-            'channels' => explode(',', env('LOG_STACK', 'single')),
-            'ignore_exceptions' => false,
-        ],
+             'driver' => 'stack',
+-            'channels' => ['single'],
++            'channels' => ['stderr'],
+-            'ignore_exceptions' => false,
++            'ignore_exceptions' => true,
++            'tap' => [
++                CloudTraceProcessorApplier::class,
++                WebProcessorApplier::class,
+            ],
+         ],
+        
 
         'single' => [
             'driver' => 'single',
@@ -95,15 +102,15 @@ return [
         ],
 
         'stderr' => [
-            'driver' => 'monolog',
-            'level' => env('LOG_LEVEL', 'debug'),
-            'handler' => StreamHandler::class,
-            'formatter' => env('LOG_STDERR_FORMATTER'),
-            'with' => [
-                'stream' => 'php://stderr',
-            ],
-            'processors' => [PsrLogMessageProcessor::class],
-        ],
+             'driver' => 'monolog',
++            'level' => env('LOG_STDERR_LEVEL'),
+             'handler' => StreamHandler::class,
+-            'formatter' => env('LOG_STDERR_FORMATTER'),
++            'formatter' => env('LOG_STDERR_FORMATTER', JsonFormatter::class),
+             'with' => [
+                 'stream' => 'php://stderr',
+             ],
+         ],
 
         'syslog' => [
             'driver' => 'syslog',
@@ -124,8 +131,9 @@ return [
         ],
 
         'emergency' => [
-            'path' => storage_path('logs/laravel.log'),
-        ],
+-            'path' => storage_path('logs/laravel.log'),
++            'path' => 'php://stderr',
+         ],
 
     ],
 
